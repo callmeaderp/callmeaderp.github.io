@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joshua Beldue — Web Design Portfolio</title>
+  <meta name="description" content="Custom web design for small businesses in Rochester, NY and beyond. Fast, mobile-friendly, affordable websites.">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --text: #e4e4e7;
+      --text-muted: #9ca3af;
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
+    header {
+      padding: 4rem 0 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Projects grid */
+    .projects {
+      padding: 2rem 0 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      background: #23263a;
+    }
+
+    .card-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      width: fit-content;
+    }
+
+    .badge-trade { background: #1e3a5f; color: #93c5fd; }
+    .badge-landscape { background: #1a3a2a; color: #86efac; }
+
+    .card-body p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.15s;
+    }
+
+    .card-link:hover { color: var(--accent-hover); }
+
+    .card-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.15s;
+    }
+
+    .card-link:hover svg { transform: translateX(3px); }
+
+    /* Featured tag */
+    .featured-label {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25em 0.65em;
+      border-radius: 4px;
+    }
+
+    .card-img-wrap {
+      position: relative;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.75rem; }
+      .projects { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Joshua Beldue</h1>
+      <p>Custom websites for small businesses — fast, mobile-friendly, and affordable.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="projects">
+
+      <!-- Westside -->
+      <a class="card" href="/Westside-Website-Project/" style="text-decoration:none;color:inherit;">
+        <div class="card-img-wrap">
+          <img class="card-img" src="thumbnails/westside.png" alt="Westside Turf & Ornamental screenshot"
+               onerror="this.style.display='none'">
+          <span class="featured-label">Live Client</span>
+        </div>
+        <div class="card-body">
+          <h2>Westside Turf &amp; Ornamental</h2>
+          <span class="badge badge-landscape">Landscaping</span>
+          <p>Professional lawn care and pest management company. Full site build with service details, service area, and contact integration.</p>
+          <span class="card-link">View site <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L11.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 11-1.04-1.08l3.158-2.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></span>
+        </div>
+      </a>
+
+      <!-- Loria -->
+      <a class="card" href="/loria-electric-demo/" style="text-decoration:none;color:inherit;">
+        <div class="card-img-wrap">
+          <img class="card-img" src="thumbnails/loria.png" alt="Loria Electrical Services screenshot"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="card-body">
+          <h2>Loria Electrical Services</h2>
+          <span class="badge badge-trade">Electrical</span>
+          <p>Full-service electrical contractor in Rochester. Modern redesign with service showcase, testimonials, and scroll animations.</p>
+          <span class="card-link">View site <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L11.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 11-1.04-1.08l3.158-2.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></span>
+        </div>
+      </a>
+
+      <!-- Crossfield -->
+      <a class="card" href="/crossfield-demo/" style="text-decoration:none;color:inherit;">
+        <div class="card-img-wrap">
+          <img class="card-img" src="thumbnails/crossfield.png" alt="Crossfield Heating & Cooling screenshot"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="card-body">
+          <h2>Crossfield Heating &amp; Cooling</h2>
+          <span class="badge badge-trade">HVAC</span>
+          <p>Heating and cooling specialists. Clean design with emergency service callouts, seasonal promotions, and a service area map.</p>
+          <span class="card-link">View site <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L11.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 11-1.04-1.08l3.158-2.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></span>
+        </div>
+      </a>
+
+      <!-- Mussumeci -->
+      <a class="card" href="/mussumeci-demo/" style="text-decoration:none;color:inherit;">
+        <div class="card-img-wrap">
+          <img class="card-img" src="thumbnails/mussumeci.png" alt="Mussumeci Electric screenshot"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="card-body">
+          <h2>Mussumeci Electric Inc.</h2>
+          <span class="badge badge-trade">Electrical</span>
+          <p>Commercial and residential electrical services. Dark navy theme with animated counters, scroll effects, and emergency contact features.</p>
+          <span class="card-link">View site <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L11.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 11-1.04-1.08l3.158-2.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></span>
+        </div>
+      </a>
+
+      <!-- JMF -->
+      <a class="card" href="/jmf-landscaping-demo/" style="text-decoration:none;color:inherit;">
+        <div class="card-img-wrap">
+          <img class="card-img" src="thumbnails/jmf.png" alt="JMF Landscaping screenshot"
+               onerror="this.style.display='none'">
+        </div>
+        <div class="card-body">
+          <h2>JMF Landscaping LLC</h2>
+          <span class="badge badge-landscape">Landscaping</span>
+          <p>Full-service landscaping with hardscaping specialty. Earth-toned design featuring service cards, project gallery, and bulk product listings.</p>
+          <span class="card-link">View site <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L11.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 11-1.04-1.08l3.158-2.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Rochester, NY &bull; <a href="mailto:callmeaderp@gmail.com">Get in touch</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
