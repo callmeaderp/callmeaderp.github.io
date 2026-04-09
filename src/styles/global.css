@@ -18,6 +18,10 @@
   --color-green-glow: rgba(34, 197, 94, 0.12);
 }
 
+/* ── Hide scrollbar on nav ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ── Smooth scroll ── */
 html {
   scroll-behavior: smooth;
