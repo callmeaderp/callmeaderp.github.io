@@ -1,0 +1,114 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Web developer and digital marketing specialist based in Rochester, NY." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="bg-surface text-text">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Joshua Beldue" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>J</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="font-sans bg-surface text-text antialiased">
+    <slot />
+
+    <!-- Scroll animation observer -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document.querySelectorAll('.animate-on-scroll, .stagger-children').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Animated counters
+      document.querySelectorAll('[data-counter]').forEach((el) => {
+        const target = parseInt(el.getAttribute('data-counter') || '0', 10);
+        const prefix = el.getAttribute('data-prefix') || '';
+        const suffix = el.getAttribute('data-suffix') || '';
+        let started = false;
+
+        const counterObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && !started) {
+                started = true;
+                animateCounter(el as HTMLElement, target, prefix, suffix);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        counterObserver.observe(el);
+      });
+
+      function animateCounter(el: HTMLElement, target: number, prefix: string, suffix: string) {
+        const duration = 1200;
+        const start = performance.now();
+
+        function step(now: number) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * target);
+          el.textContent = prefix + current.toLocaleString() + suffix;
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+        requestAnimationFrame(step);
+      }
+
+      // Smooth active nav tracking
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+      const navObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) => {
+                link.classList.remove('text-accent', 'border-accent');
+                link.classList.add('text-text-muted', 'border-transparent');
+              });
+              const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+              if (active) {
+                active.classList.add('text-accent', 'border-accent');
+                active.classList.remove('text-text-muted', 'border-transparent');
+              }
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' }
+      );
+
+      sections.forEach((section) => navObserver.observe(section));
+    </script>
+  </body>
+</html>
